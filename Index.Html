@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Interiors | Transform Your Space</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("aMIYHeExpHwR_ZtlM");
+    })();
+  </script>
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full bg-white z-50 transition-all duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <a href="#hero" class="text-2xl font-bold text-indigo-700 flex items-center">
+        <i class="fas fa-couch mr-2"></i>ElegantInteriors
+      </a>
+      <ul class="hidden md:flex space-x-8 font-medium text-gray-700">
+        <li><a href="#projects" class="hover:text-indigo-700 transition-colors"><i class="fas fa-project-diagram mr-1"></i>Projects</a></li>
+        <li><a href="#gallery" class="hover:text-indigo-700 transition-colors"><i class="fas fa-images mr-1"></i>Gallery</a></li>
+        <li><a href="#transformations" class="hover:text-indigo-700 transition-colors"><i class="fas fa-sync-alt mr-1"></i>Transformations</a></li>
+        <li><a href="#services" class="hover:text-indigo-700 transition-colors"><i class="fas fa-concierge-bell mr-1"></i>Services</a></li>
+        <li><a href="#about" class="hover:text-indigo-700 transition-colors"><i class="fas fa-info-circle mr-1"></i>About</a></li>
+        <li><a href="#contact" class="hover:text-indigo-700 transition-colors"><i class="fas fa-envelope mr-1"></i>Contact</a></li>
+      </ul>
+      <button id="menu-btn" class="md:hidden p-2 rounded-md hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <ul id="mobile-menu" class="md:hidden hidden flex-col space-y-2 bg-white w-full text-center py-4 shadow-md">
+      <li><a href="#projects" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-project-diagram mr-2"></i>Projects</a></li>
+      <li><a href="#gallery" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-images mr-2"></i>Gallery</a></li>
+      <li><a href="#transformations" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-sync-alt mr-2"></i>Transformations</a></li>
+      <li><a href="#services" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-concierge-bell mr-2"></i>Services</a></li>
+      <li><a href="#about" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-info-circle mr-2"></i>About</a></li>
+      <li><a href="#contact" class="block py-2 hover:text-indigo-700 transition-colors"><i class="fas fa-envelope mr-2"></i>Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <!-- Video Background -->
+    <video class="hero-video" autoplay muted loop playsinline poster="/images/hero.avif">
+      <source src="videos/cinematic.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content Overlay -->
+    <div class="hero-content">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Transform Your Space</h1>
+      <p class="text-xl md:text-2xl mb-8">Creating beautiful interiors that reflect your personality</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#projects" class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg shadow-lg hover:scale-105 transform transition duration-300 flex items-center">
+          <i class="fas fa-eye mr-2"></i>View Projects
+        </a>
+        <a href="#contact" class="bg-indigo-700 text-white border border-indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-800 transition duration-300 flex items-center">
+          <i class="fas fa-paper-plane mr-2"></i>Contact Us
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down animate-bounce text-white text-2xl"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center hidden">
+    <div class="relative w-full h-full max-w-6xl max-h-screen flex items-center justify-center p-4">
+      <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl bg-indigo-700 w-12 h-12 rounded-full flex items-center justify-center z-10 hover:bg-indigo-800 transition">
+        <i class="fas fa-times"></i>
+      </button>
+      <button id="lightbox-prev" class="absolute left-4 text-white text-2xl bg-indigo-700/80 w-12 h-12 rounded-full flex items-center justify-center z-10 hover:bg-indigo-800 transition">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="lightbox-next" class="absolute right-4 text-white text-2xl bg-indigo-700/80 w-12 h-12 rounded-full flex items-center justify-center z-10 hover:bg-indigo-800 transition">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-content w-full h-full flex items-center justify-center">
+        <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">Our Services</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">We offer comprehensive interior design solutions tailored to your unique style and needs</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div class="service-card bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="service-icon w-12 h-12 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <i class="fas fa-home text-indigo-700 text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-semibold mb-2 text-center">Residential Design</h3>
+          <p class="text-gray-600 text-sm md:text-base text-center">Transform your home into a beautiful and functional space that reflects your personality.</p>
+        </div>
+        
+        <div class="service-card bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="service-icon w-12 h-12 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <i class="fas fa-building text-indigo-700 text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-semibold mb-2 text-center">Commercial Design</h3>
+          <p class="text-gray-600 text-sm md:text-base text-center">Create inspiring work environments that boost productivity and impress clients.</p>
+        </div>
+        
+        <div class="service-card bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="service-icon w-12 h-12 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <i class="fas fa-pencil-ruler text-indigo-700 text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-semibold mb-2 text-center">Space Planning</h3>
+          <p class="text-gray-600 text-sm md:text-base text-center">Optimize your layout for better flow, functionality, and aesthetic appeal.</p>
+        </div>
+        
+        <div class="service-card bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+          <div class="service-icon w-12 h-12 md:w-16 md:h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <i class="fas fa-palette text-indigo-700 text-xl md:text-2xl"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-semibold mb-2 text-center">Color Consultation</h3>
+          <p class="text-gray-600 text-sm md:text-base text-center">Choose the perfect color schemes to create the desired mood and atmosphere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">Gallery Highlights</h2>
+      <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Explore our portfolio of stunning interior transformations</p>
+      
+      <div class="gallery-scroll-container md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-6">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXRpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Modern Living Room" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Modern Living Room</h3>
+            <p class="text-gray-600">Minimalist design with warm accents</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60">
+          <img src="https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elegant Kitchen" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Elegant Kitchen</h3>
+            <p class="text-gray-600">Functional beauty with premium materials</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Serene Bedroom" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Serene Bedroom</h3>
+            <p class="text-gray-600">Calming retreat with custom furnishings</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Home Office" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Home Office</h3>
+            <p class="text-gray-600">Productive space with elegant design</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1537726235470-8504e3beef77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1537726235470-8504e3beef77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Luxury Bathroom" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Luxury Bathroom</h3>
+            <p class="text-gray-600">Spa-like retreat with premium finishes</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Dining Area" class="w-full h-64 object-cover">
+          <div class="p-4 bg-white">
+            <h3 class="font-semibold">Dining Area</h3>
+            <p class="text-gray-600">Elegant space for entertaining guests</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transformations -->
+  <section id="transformations" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">Before & After Transformations</h2>
+      <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Witness the dramatic changes we've made to spaces just like yours</p>
+
+      <!-- Room Tabs -->
+      <div class="room-tabs-container overflow-x-auto pb-4 mb-8 md:mb-12">
+        <div class="room-tabs flex flex-nowrap justify-start md:justify-center gap-2 md:gap-4 min-w-max">
+          <button class="tab-btn active flex items-center whitespace-nowrap" data-room="shower">
+            <i class="fas fa-shower mr-2"></i>Bathroom
+          </button>
+          <button class="tab-btn flex items-center whitespace-nowrap" data-room="living">
+            <i class="fas fa-couch mr-2"></i>Living Room
+          </button>
+          <button class="tab-btn flex items-center whitespace-nowrap" data-room="bedroom">
+            <i class="fas fa-bed mr-2"></i>Bedroom
+          </button>
+          <button class="tab-btn flex items-center whitespace-nowrap" data-room="kitchen">
+            <i class="fas fa-utensils mr-2"></i>Kitchen
+          </button>
+          <button class="tab-btn flex items-center whitespace-nowrap" data-room="office">
+            <i class="fas fa-briefcase mr-2"></i>Office
+          </button>
+        </div>
+      </div>
+
+      <!-- Transformation Containers -->
+      <div class="before-after-wrapper">
+
+        <!-- Bathroom -->
+        <div class="before-after-container active" id="shower">
+          <img src="https://images.unsplash.com/photo-1650315534102-3ca1e51d41c5?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bathroom Before" class="before">
+          <img src="https://plus.unsplash.com/premium_photo-1661902468735-eabf780f8ff6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bathroom After" class="after">
+          <div class="before-after-slider">
+            <i class="fas fa-arrows-alt-h"></i>
+          </div>
+        </div>
+
+        <!-- Living Room -->
+        <div class="before-after-container" id="living">
+          <img src="https://images.unsplash.com/photo-1630699144919-681cf308ae82?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Living Room Before" class="before">
+          <img src="https://plus.unsplash.com/premium_photo-1706140675031-1e0548986ad1?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Living Room After" class="after">
+          <div class="before-after-slider">
+            <i class="fas fa-arrows-alt-h"></i>
+          </div>
+        </div>
+
+        <!-- Bedroom -->
+        <div class="before-after-container" id="bedroom">
+          <img src="https://images.unsplash.com/photo-1630699376059-b781970715b1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bedroom Before" class="before">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bedroom After" class="after">
+          <div class="before-after-slider">
+            <i class="fas fa-arrows-alt-h"></i>
+          </div>
+        </div>
+
+        <!-- Kitchen -->
+        <div class="before-after-container" id="kitchen">
+          <img src="https://images.unsplash.com/photo-1692133219782-070d4ac2aefb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kitchen Before" class="before">
+          <img src="https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kitchen After" class="after">
+          <div class="before-after-slider">
+            <i class="fas fa-arrows-alt-h"></i>
+          </div>
+        </div>
+
+        <!-- Office -->
+        <div class="before-after-container" id="office">
+          <img src="https://images.unsplash.com/photo-1692133224682-42cc3283e4ea?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Office Before" class="before">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Office After" class="after">
+          <div class="before-after-slider">
+            <i class="fas fa-arrows-alt-h"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">About Us</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Crafting beautiful spaces that tell your unique story</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpb3IlMjBkZXNpZ25lcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Our Team" class="rounded-xl shadow-lg fade-in">
+          <div class="absolute -bottom-6 -right-6 bg-indigo-700 text-white p-6 rounded-xl shadow-xl">
+            <div class="text-3xl font-bold">15+</div>
+            <div>Years Experience</div>
+          </div>
+        </div>
+        <div class="space-y-4 fade-in">
+          <p class="text-lg">Elegant Interiors has been transforming homes and commercial spaces for over 15 years. Our philosophy is simple: combine functionality, comfort, and beauty to create spaces that reflect your personality.</p>
+          <p>Our team of award-winning designers brings expertise and passion to every project. From consultation to completion, we ensure a smooth, collaborative process that exceeds expectations.</p>
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100">
+              <div class="text-3xl font-bold text-indigo-700">250+</div>
+              <div>Projects Completed</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100">
+              <div class="text-3xl font-bold text-indigo-700">98%</div>
+              <div>Client Satisfaction</div>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <a href="#contact" class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-800 transition duration-300 inline-flex items-center">
+              <i class="fas fa-calendar-check mr-2"></i>Schedule Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">Recent Projects</h2>
+      <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Explore our latest interior design transformations</p>
+      
+      <div class="projects-scroll-container md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-8">
+        <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxpdmluZyUyMHJvb20lMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxpdmluZyUyMHJvb20lMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Modern Living Room" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+            <h3 class="font-bold text-xl mb-2">Modern Living Room</h3>
+            <p class="mb-4">California Residence</p>
+          </div>
+        </div>
+        
+        <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a2l0Y2hlbiUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sleek Kitchen Design" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+            <h3 class="font-bold text-xl mb-2">Sleek Kitchen Design</h3>
+            <p class="mb-4">New York Apartment</p>
+          </div>
+        </div>
+        
+        <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Office Workspace" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+            <h3 class="font-bold text-xl mb-2">Office Workspace</h3>
+            <p class="mb-4">London Office</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#gallery" class="bg-indigo-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-800 transition duration-300 inline-flex items-center">
+          <i class="fas fa-images mr-2"></i>View Full Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-indigo-700 text-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-6 md:mb-12 fade-in text-white">What Our Clients Say</h2>
+      
+      <div class="testimonials-scroll-container md:grid md:grid-cols-1 md:grid-cols-3 md:gap-8">
+        <div class="testimonial-card bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="italic mb-4">"Elegant Interiors completely transformed our home. Their attention to detail and creative solutions exceeded our expectations."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
+            </div>
+            <div>
+              <div class="font-semibold">Sarah Johnson</div>
+              <div class="text-indigo-200">Homeowner</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="italic mb-4">"The team at Elegant Interiors understood our vision and brought it to life. Our new office space has received countless compliments."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+            </div>
+            <div>
+              <div class="font-semibold">Michael Chen</div>
+              <div class="text-indigo-200">Business Owner</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card bg-white/10 p-6 rounded-xl backdrop-blur-sm">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          <p class="italic mb-4">"Working with Elegant Interiors was a pleasure from start to finish. They delivered on time and within budget while creating a stunning space."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jessica Williams">
+            </div>
+            <div>
+              <div class="font-semibold">Jessica Williams</div>
+              <div class="text-indigo-200">Apartment Owner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-4xl font-bold text-center mb-4 fade-in">Get in Touch</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Ready to transform your space? Contact us for a consultation</p>
+      
+      <div class="flex flex-col lg:flex-row gap-10">
+        <!-- Form (will come first on mobile) -->
+        <div class="lg:order-2 lg:col-span-2 w-full">
+          <form id="contact-form" class="space-y-6 fade-in bg-white p-8 rounded-xl shadow-md">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="relative">
+                <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="First Name" class="w-full pl-12 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700 transition">
+              </div>
+              <div class="relative">
+                <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Last Name" class="w-full pl-12 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700 transition">
+              </div>
+            </div>
+            
+            <div class="relative">
+              <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input type="email" placeholder="Email" class="w-full pl-12 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700 transition">
+            </div>
+            
+            <div class="relative">
+              <i class="fas fa-phone absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input type="tel" placeholder="Phone" class="w-full pl-12 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700 transition">
+            </div>
+            
+            <div class="relative">
+              <i class="fas fa-edit absolute left-4 top-4 text-gray-400"></i>
+              <textarea placeholder="Your Message" class="w-full pl-12 p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700 transition h-32"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-indigo-700 text-white p-3 rounded-lg font-semibold hover:bg-indigo-800 transition duration-300 flex items-center justify-center">
+              <i class="fas fa-paper-plane mr-2"></i>Send Message
+            </button>
+            
+            <div id="form-message" class="hidden p-4 rounded-lg text-center"></div>
+          </form>
+        </div>
+        
+        <!-- Contact Info (will come after form on mobile) -->
+        <div class="lg:order-1 lg:col-span-1 w-full">
+          <div class="bg-gray-50 p-6 rounded-xl shadow-md h-full">
+            <h3 class="text-xl font-semibold mb-4 text-indigo-700">Contact Information</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-map-marker-alt text-indigo-700"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Address</h4>
+                  <p class="text-gray-600">123 Design Street, Interior City, IC 10001</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-phone text-indigo-700"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Phone</h4>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-envelope text-indigo-700"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <p class="text-gray-600">hello@elegantinteriors.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-clock text-indigo-700"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Hours</h4>
+                  <p class="text-gray-600">Mon-Fri: 9am - 6pm<br>Sat: 10am - 4pm</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h4 class="font-semibold mb-3">Follow Us</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition">
+                  <i class="fab fa-pinterest"></i>
+                </a>
+                <a href="#" class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition">
+                  <i class="fab fa-houzz"></i>
+                </a>
+                <a href="#" class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <a href="#" class="text-2xl font-bold text-white flex items-center mb-4">
+            <i class="fas fa-couch mr-2"></i>ElegantInteriors
+          </a>
+          <p class="text-gray-400">Transforming spaces into beautiful, functional environments that reflect your unique style.</p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a></li>
+            <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+            <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Residential Design</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Commercial Design</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Space Planning</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Color Consultation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Furniture Selection</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Subscribe to our newsletter for design tips and exclusive offers.</p>
+          <form class="flex">
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none w-full text-gray-800">
+            <button type="submit" class="bg-indigo-700 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-800 transition">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p>&copy; 2025 Elegant Interiors. All rights reserved.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-houzz"></i></a>
+          <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

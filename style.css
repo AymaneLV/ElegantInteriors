@@ -1,0 +1,512 @@
+/* ------------------------------
+  RESET & GLOBAL STYLES
+  (Combined with modern best practices)
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* ------------------------------
+  NAVBAR
+  (Fully updated with requested styles)
+------------------------------ */
+.navbar, nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(255, 255, 255, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled, nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.521);
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  border-color: #b9b6b6;
+  border-width: 1px;
+  padding: 5px 40px;
+}
+
+.navbar .logo, nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar .nav-links, nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links a, nav .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover, nav .nav-links a:hover {
+  color: #440cdd;
+}
+
+/* ------------------------------
+  HERO SECTION
+  (Updated with video background implementation)
+------------------------------ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator {
+  color: white;
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------
+  LIGHTBOX
+------------------------------ */
+#lightbox {
+  transition: opacity 0.3s ease;
+}
+
+#lightbox:not(.hidden) {
+  display: flex !important;
+}
+
+/* ------------------------------
+  BUTTONS
+  (Updated to use consistent purple palette)
+------------------------------ */
+.hero-btn, .tab-btn, button[type="submit"], .service-card .btn, .project-card .btn, .btn-primary {
+  background-color: #440cdd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.hero-btn:hover, .tab-btn:hover, button[type="submit"]:hover, 
+.service-card .btn:hover, .project-card .btn:hover, .btn-primary:hover {
+  background-color: #3a0abf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 12, 221, 0.3);
+}
+
+/* ------------------------------
+  SECTION HEADINGS
+  (Updated with requested styles)
+------------------------------ */
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section h2, .section-title {
+  color: #440cdd;
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  color: white !important;
+}
+
+/* ------------------------------
+  ROOM TABS
+  (Fully updated with requested styles)
+------------------------------ */
+.room-tabs-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 20px;
+}
+
+.room-tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.room-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  transition: transform 0.2s, opacity 0.2s;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.tab-btn:hover:not(.active) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background-color: #4338ca;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(68, 12, 221, 0.3);
+}
+
+/* ------------------------------
+  BEFORE & AFTER SLIDER
+  (Fully updated with requested styles)
+------------------------------ */
+.before-after-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.before-after-container {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+  display: none;
+  user-select: none;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  height: 500px;
+}
+
+.before-after-container.active {
+  display: block;
+}
+
+.before-after-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.before-after-container .after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  clip-path: inset(0 50% 0 0);
+}
+
+.before-after-slider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background-color: #4f46e5;
+  cursor: ew-resize;
+  z-index: 2;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.before-after-slider i {
+  background-color: #4f46e5;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------------------
+  SERVICES
+------------------------------ */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ------------------------------
+  GALLERY & PROJECTS HORIZONTAL SCROLL
+------------------------------ */
+.gallery-scroll-container,
+.projects-scroll-container,
+.testimonials-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0.5rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery-scroll-container::-webkit-scrollbar,
+.projects-scroll-container::-webkit-scrollbar,
+.testimonials-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb,
+.projects-scroll-container::-webkit-scrollbar-thumb,
+.testimonials-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #c7d2fe;
+  border-radius: 3px;
+}
+
+.gallery-item,
+.project-card,
+.testimonial-card {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+}
+
+/* Reset for desktop */
+@media (min-width: 768px) {
+  .gallery-scroll-container,
+  .projects-scroll-container,
+  .testimonials-scroll-container {
+    display: grid;
+    overflow: visible;
+    gap: 1.5rem;
+    padding: 0;
+  }
+  
+  .gallery-item,
+  .project-card,
+  .testimonial-card {
+    width: auto;
+  }
+}
+
+/* ------------------------------
+  PROJECTS
+------------------------------ */
+.project-card {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ------------------------------
+  TESTIMONIALS
+------------------------------ */
+.testimonial-card {
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ------------------------------
+  ANIMATIONS
+------------------------------ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* ------------------------------
+  RESPONSIVE DESIGN
+  (Fully merged and optimized)
+------------------------------ */
+@media (max-width: 1024px) {
+  section {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  
+  .hero-content p {
+    font-size: 16px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  nav, .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  nav .nav-links, .navbar .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .before-after-container {
+    height: 400px;
+  }
+
+  /* Services grid for mobile */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Contact form order */
+  .contact-form-order {
+    order: 2;
+  }
+
+  .contact-info-order {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+  
+  section h2, .section-title {
+    font-size: 24px;
+  }
+  
+  .tab-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+  
+  .before-after-slider {
+    width: 3px;
+  }
+  
+  .before-after-container {
+    height: 300px;
+  }
+
+  /* Services grid for very small screens */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
