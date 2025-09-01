@@ -1,13 +1,3 @@
-// --------- NAVBAR SCROLL EFFECT ---------
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('navbar-glass');
-  } else {
-    navbar.classList.remove('navbar-glass');
-  }
-});
-
 // --------- MOBILE MENU TOGGLE ---------
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -273,3 +263,59 @@ enhanceHorizontalScroll('gallery-scroll-container');
 enhanceHorizontalScroll('projects-scroll-container');
 enhanceHorizontalScroll('testimonials-scroll-container');
 enhanceHorizontalScroll('room-tabs-container');
+
+// --- Smooth horizontal scrollers with arrows (2025-09-01) ---
+function setupScroller(containerSelector, prevBtnSelector, nextBtnSelector) {
+  const scroller = document.querySelector(containerSelector);
+  if (!scroller) return;
+  const prev = document.querySelector(prevBtnSelector);
+  const next = document.querySelector(nextBtnSelector);
+
+  const getStep = () => {
+    // one card width or 80% of viewport on mobile
+    const firstChild = scroller.querySelector(':scope > *');
+    const childWidth = firstChild ? firstChild.getBoundingClientRect().width : 0;
+    return Math.max(childWidth || 0, Math.floor(window.innerWidth * 0.8));
+  };
+
+  function scrollByAmount(dir = 1) {
+    scroller.scrollBy({ left: dir * getStep(), behavior: 'smooth' });
+  }
+
+  prev && prev.addEventListener('click', () => scrollByAmount(-1));
+  next && next.addEventListener('click', () => scrollByAmount(1));
+
+  // Improve touch drag feel by reducing snapping aggressiveness via JS assistance
+  let isPointerDown = false;
+  let startX = 0;
+  let startLeft = 0;
+
+  scroller.addEventListener('pointerdown', (e) => {
+    isPointerDown = true;
+    startX = e.clientX;
+    startLeft = scroller.scrollLeft;
+    scroller.setPointerCapture(e.pointerId);
+  });
+  window.addEventListener('pointerup', () => { isPointerDown = false; });
+  scroller.addEventListener('pointermove', (e) => {
+    if (!isPointerDown) return;
+    const dx = e.clientX - startX;
+    scroller.scrollLeft = startLeft - dx;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupScroller('.gallery-scroll-container', '#galleryPrev', '#galleryNext');
+  setupScroller('.projects-scroll-container', '#projectsPrev', '#projectsNext');
+  setupScroller('.testimonials-scroll-container', '#clientsPrev', '#clientsNext');
+
+  // Tabs smooth scroll: keep active tab visible/centered
+  document.querySelectorAll('[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabsContainer = btn.closest('.tabs-container');
+      if (tabsContainer) {
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    });
+  });
+});

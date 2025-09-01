@@ -145,8 +145,11 @@
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4 fade-in">Gallery Highlights</h2>
       <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Explore our portfolio of stunning interior transformations</p>
+<div class="scroller-wrapper relative md:static">
+  <button aria-label="Scroll Left" class="scroller-arrow left md:hidden" id="galleryPrev">&larr;</button>
+  <button aria-label="Scroll Right" class="scroller-arrow right md:hidden" id="galleryNext">&rarr;</button>
       
-      <div class="gallery-scroll-container md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-6">
+      <div class="gallery-scroll-container gallery-scroll md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-6">
         <div class="gallery-item rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60">
           <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXRpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Modern Living Room" class="w-full h-64 object-cover">
           <div class="p-4 bg-white">
@@ -205,7 +208,7 @@
       <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Witness the dramatic changes we've made to spaces just like yours</p>
 
       <!-- Room Tabs -->
-      <div class="room-tabs-container overflow-x-auto pb-4 mb-8 md:mb-12">
+      <div class="room-tabs-container overflow-x-auto pb-4 mb-8 md:mb-12 tabs-scroll">
         <div class="room-tabs flex flex-nowrap justify-start md:justify-center gap-2 md:gap-4 min-w-max">
           <button class="tab-btn active flex items-center whitespace-nowrap" data-room="shower">
             <i class="fas fa-shower mr-2"></i>Bathroom
@@ -320,11 +323,14 @@
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4 fade-in">Recent Projects</h2>
       <p class="text-center text-gray-600 mb-6 md:mb-12 max-w-2xl mx-auto">Explore our latest interior design transformations</p>
+<div class="scroller-wrapper relative md:static">
+  <button aria-label="Scroll Left" class="scroller-arrow left md:hidden" id="projectsPrev">&larr;</button>
+  <button aria-label="Scroll Right" class="scroller-arrow right md:hidden" id="projectsNext">&rarr;</button>
       
-      <div class="projects-scroll-container md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-8">
+      <div class="projects-scroll-container projects-scroll md:grid md:grid-cols-1 sm:md:grid-cols-2 lg:md:grid-cols-3 md:gap-8">
         <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxpdmluZyUyMHJvb20lMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60">
           <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxpdmluZyUyMHJvb20lMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Modern Living Room" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
-          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white no-gaps-overlay">
             <h3 class="font-bold text-xl mb-2">Modern Living Room</h3>
             <p class="mb-4">California Residence</p>
           </div>
@@ -332,7 +338,7 @@
         
         <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a2l0Y2hlbiUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60">
           <img src="https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sleek Kitchen Design" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
-          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white no-gaps-overlay">
             <h3 class="font-bold text-xl mb-2">Sleek Kitchen Design</h3>
             <p class="mb-4">New York Apartment</p>
           </div>
@@ -340,7 +346,7 @@
         
         <div class="project-card relative group rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-500 cursor-pointer" data-image="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60">
           <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2ZmaWNlJTIwZGVzaWdufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Office Workspace" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
-          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6 text-white no-gaps-overlay">
             <h3 class="font-bold text-xl mb-2">Office Workspace</h3>
             <p class="mb-4">London Office</p>
           </div>
@@ -360,7 +366,7 @@
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-6 md:mb-12 fade-in text-white">What Our Clients Say</h2>
       
-      <div class="testimonials-scroll-container md:grid md:grid-cols-1 md:grid-cols-3 md:gap-8">
+      <div class="testimonials-scroll-container testimonials-scroll md:grid md:grid-cols-1 md:grid-cols-3 md:gap-8">
         <div class="testimonial-card bg-white/10 p-6 rounded-xl backdrop-blur-sm">
           <div class="flex items-center mb-4">
             <div class="text-yellow-400 text-xl">
