@@ -168,11 +168,13 @@ if (contactForm) {
     
     // Get form data
     const formData = {
-      from_name: contactForm.querySelector('input[type="text"]').value,
-      from_email: contactForm.querySelector('input[type="email"]').value,
-      from_phone: contactForm.querySelector('input[type="tel"]').value,
-      message: contactForm.querySelector('textarea').value
+      firstName: contactForm.querySelector('input[name="firstName"]').value,
+      lastName: contactForm.querySelector('input[name="lastName"]').value,
+      email: contactForm.querySelector('input[name="email"]').value,
+      phone: contactForm.querySelector('input[name="phone"]').value,
+      message: contactForm.querySelector('textarea[name="message"]').value
     };
+
     
     // Send email using EmailJS
     emailjs.send('service_n5zrphg', 'template_kji7hhj' , formData)
