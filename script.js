@@ -1,3 +1,4 @@
+// script.js
 // --------- MOBILE MENU TOGGLE ---------
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -73,11 +74,20 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Initialize gallery items
-document.querySelectorAll('.gallery-item, .project-card').forEach((item) => {
-  const imgSrc = item.getAttribute('data-image');
-  item.addEventListener('click', () => {
-    openLightbox([imgSrc], 0);
+// Lightbox initialization - fixed to work on both mobile and desktop
+document.addEventListener('DOMContentLoaded', function() {
+  // Add click event to gallery items
+  document.querySelectorAll('.gallery-item, .project-card').forEach((item) => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const imgSrc = this.getAttribute('data-image') || this.querySelector('img').src;
+      openLightbox([imgSrc], 0);
+    });
+  });
+
+  // Prevent the lightbox from closing when clicking on the image
+  lightboxImg.addEventListener('click', function(e) {
+    e.stopPropagation();
   });
 });
 
@@ -203,7 +213,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      const navHeight = navbar.offsetHeight;
+      const navHeight = document.getElementById('navbar').offsetHeight;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
       
       window.scrollTo({
@@ -309,12 +319,11 @@ function setupScroller(containerSelector, prevBtnSelector, nextBtnSelector) {
 document.addEventListener('DOMContentLoaded', () => {
   setupScroller('.gallery-scroll-container', '#galleryPrev', '#galleryNext');
   setupScroller('.projects-scroll-container', '#projectsPrev', '#projectsNext');
-  setupScroller('.testimonials-scroll-container', '#clientsPrev', '#clientsNext');
 
   // Tabs smooth scroll: keep active tab visible/centered
-  document.querySelectorAll('[data-tab]').forEach(btn => {
+  document.querySelectorAll('[data-room]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const tabsContainer = btn.closest('.tabs-container');
+      const tabsContainer = btn.closest('.room-tabs-container');
       if (tabsContainer) {
         btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
